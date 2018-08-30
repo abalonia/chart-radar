@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+		<title>Iraq Radar Chart</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+		<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		
+		<style>
+			body {
+				font-family: 'Open Sans', sans-serif;
+				font-size: 11px;
+				font-weight: 300;
+				fill: #242424;
+				text-align: center;
+				text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+				cursor: default;
+			}
+			
+			.legend {
+				font-family: 'Raleway', sans-serif;
+				fill: #333333;
+			}
+			
+			.tooltip {
+				fill: #333333;
+			}
+		</style>
+	
+	</head>
+	<body>
+
+		<div class="radarChart"></div>
+
+		<script src="radarChart.js"></script>	
+		<script>
+      
+      /*Credits to Nadieh Bremer*/
+      
+			////////////////////////////////////////////////////////////// 
+			//////////////////////// Set-Up ////////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var margin = {top: 100, right: 100, bottom: 100, left: 100},
+				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+					
+			////////////////////////////////////////////////////////////// 
+			////////////////////////// Data ////////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var data = [
+					  [//Catchment Area
+						{axis:"Market 1",value:0.216152554},
+						{axis:"Market 2",value:0.042759184},
+						{axis:"Market 3",value:0.055080434},
+						{axis:"Market 5",value:0.046136648},
+						{axis:"Market 6",value:0.087419641},
+						{axis:"Market 7",value:0.061179638},
+						{axis:"Market 8",value:0.081919977},
+						{axis:"Market 9",value:0.033941666},
+						{axis:"Market 10",value:0.056700792},
+						{axis:"Market 11",value:0.04210384},
+						{axis:"Market 12",value:0.093939363},
+						{axis:"Market 13",value:0.018885345},
+						{axis:"Market 14",value:0.020923365},
+						{axis:"Market 15",value:0.032441101},
+						{axis:"Market 16",value:0.009477811},
+						{axis:"Market 17",value:0.065688954},
+						{axis:"Market 18",value:0.035249687}
+					  ],[//Population
+						{axis:"Market 1",value:0.026173499},
+						{axis:"Market 2",value:0.040323561},
+						{axis:"Market 3",value:0.018472377},
+						{axis:"Market 5",value:0.031383898},
+						{axis:"Market 6",value:0.032742276},
+						{axis:"Market 7",value:0.045935286},
+						{axis:"Market 8",value:0.018807302},
+						{axis:"Market 9",value:0.049517307},
+						{axis:"Market 10",value:0.054893274},
+						{axis:"Market 11",value:0.081903251},
+						{axis:"Market 12",value:0.062399141},
+						{axis:"Market 13",value:0.048772808},
+						{axis:"Market 14",value:0.26221042},
+						{axis:"Market 15",value:0.058479532},
+						{axis:"Market 16",value:0.033403942},
+						{axis:"Market 17",value:0.065218178},
+						{axis:"Market 18",value:0.069363948}
+					  ],[//Population Density
+						{axis:"Market 1",value:0.003799029},
+						{axis:"Market 2",value:0.029586981},
+						{axis:"Market 3",value:0.010521959},
+						{axis:"Market 5",value:0.021341848},
+						{axis:"Market 6",value:0.011750897},
+						{axis:"Market 7",value:0.023556496},
+						{axis:"Market 8",value:0.007202908},
+						{axis:"Market 9",value:0.045771489},
+						{axis:"Market 10",value:0.030373944},
+						{axis:"Market 11",value:0.061031018},
+						{axis:"Market 12",value:0.020840214},
+						{axis:"Market 13",value:0.081025928},
+						{axis:"Market 14",value:0.393178348},
+						{axis:"Market 15",value:0.056556103},
+						{axis:"Market 16",value:0.110575996},
+						{axis:"Market 17",value:0.031149243},
+						{axis:"Market 18",value:0.061737597}
+					  ]
+					];
+			////////////////////////////////////////////////////////////// 
+			//////////////////// Draw the Chart ////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var color = d3.scale.ordinal()
+				.range(["#EDC951","#CC333F","#00A0B0"]);
+				
+				
+			var radarChartOptions = {
+			  w: width,
+			  h: height,
+			  margin: margin,
+			  maxValue: 0.39,
+			  levels: 5,
+			  roundStrokes: true,
+			  color: color
+			};
+			//Call function to draw the Radar chart
+			RadarChart(".radarChart", data, radarChartOptions);
+		</script>
+		
+	</body>
+</html>
